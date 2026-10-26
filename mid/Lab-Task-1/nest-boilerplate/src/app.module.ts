@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './modules/products/products.module';
 import { EmployeesModule } from './modules/employees/employees.module';
+import { CustomersModule } from './modules/customers/customers.module';
 
 @Module({
   imports: [
@@ -20,11 +21,12 @@ import { EmployeesModule } from './modules/employees/employees.module';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true, 
+        synchronize: false, 
       }),
     }),
     ProductsModule,
     EmployeesModule,
+    CustomersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
